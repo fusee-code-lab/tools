@@ -22,6 +22,13 @@ export const contentStyle = css`
   padding: ${baseTheme.headHeight}px 10px 10px;
 `;
 
+export const containerStyle = css`
+  ${contentStyle}
+  ${bgFontcolorStyle}
+  width: 100%;
+  height: 100%;
+`;
+
 injectGlobal`
   *,
   *:after,

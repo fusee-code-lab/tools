@@ -1,11 +1,13 @@
-import { useNavigate } from '@solidjs/router';
+import { containerStyle } from '../styles';
+import Head from '../components/head';
+import { navigate } from '@/renderer/common/utils';
 
 export default () => {
-  const navigate = useNavigate();
   return (
-    <div>
-      about
-      <button onClick={() => navigate('/home', { replace: true })}>back</button>
+    <div class={containerStyle}>
+      <Head title="about" />
+      123
+      <button onClick={() => navigate('/home')}>home</button>
     </div>
   );
 };
