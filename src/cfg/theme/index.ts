@@ -7,6 +7,10 @@ export const baseTheme = {
   eventWidth: 138
 };
 
+export const darkTheme = dark;
+
+export const lightTheme = light;
+
 export const Theme = (type: 'light' | 'dark' = 'light'): ThemeObj => {
   switch (type) {
     case 'dark':

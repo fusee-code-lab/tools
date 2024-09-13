@@ -5,9 +5,9 @@ import { navigate } from '@/renderer/common/utils';
 export default () => {
   return (
     <div class={containerStyle}>
-      <Head title="about" />
-      123
-      <button onClick={() => navigate('/home')}>home</button>
+      <Head title="关于" />
+      
+      <button onClick={() => navigate('/home')}>返回</button>
     </div>
   );
 };
