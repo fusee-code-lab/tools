@@ -27,12 +27,23 @@ let customize: Customize = {
 let browserWindowOptions: BrowserWindowConstructorOptions = {
   width: 800,
   height: 600,
-  frame: true,
   show: false,
   webPreferences: {
     devTools: true
   }
 };
+
+if (process.platform === 'darwin') {
+  browserWindowOptions.titleBarStyle = 'hidden';
+  browserWindowOptions.trafficLightPosition = { x: 10, y: 10 };
+} else {
+  browserWindowOptions.titleBarStyle = 'hidden';
+  browserWindowOptions.titleBarOverlay = {
+    color: '#2f3241',
+    symbolColor: '#74b1be',
+    height: 32
+  };
+}
 
 // 初始窗口组参数
 let windowDefaultCfg: WindowDefaultCfg = {

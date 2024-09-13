@@ -1,8 +1,8 @@
 import { windowLoad } from '@youliso/electronic/ipc';
 import { render } from 'solid-js/web';
-import './styles/index.css';
-import App from './app';
+import { HashRouter } from '@solidjs/router';
+import routes from './router';
 
 windowLoad(() => {
-  render(() => <App />, document.body);
+  render(() => <HashRouter>{routes(window.customize.route)}</HashRouter>, document.body);
 });

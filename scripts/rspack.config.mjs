@@ -97,43 +97,28 @@ export const rendererConfig = (isDevelopment) => ({
   target: 'web',
   entry: 'src/renderer/index.tsx',
   output: {
-    clean: true,
     path: outputPath,
-    chunkFilename: '[id].js'
+    chunkFilename: 'assets/[id].js'
   },
   resolve: {
     alias,
-    extensions: [...extensions, '...', '.tsx', '.jsx'],
+    extensions: [...extensions, '.tsx', '.jsx'],
     tsConfig
   },
   optimization: {
     minimize: !isDevelopment
   },
-  experiments: {
-    css: true
-  },
   module: {
     rules: [
       ...rules,
-      {
-        test: /.css$/,
-        type: 'css'
-      },
-      {
-        test: /\.module.css$/,
-        type: 'css/module',
-        parser: {
-          namedExports: false
-        }
-      },
       {
         test: /\.tsx?$/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: [['solid']],
-              plugins: ['solid-refresh/babel']
+              presets: [['@babel/preset-typescript'], ['solid']],
+              plugins: ['solid-refresh/babel', '@emotion/babel-plugin']
             }
           }
         ]
