@@ -15,6 +15,10 @@ import { app, Menu, nativeImage, Tray } from 'electron';
 import logo from '@/assets/icon/logo.png';
 import { resourcesOn } from './modular/resources';
 import { defaultSessionInit, sessionOn } from './modular/session';
+import { theme, themeOn, themeRefresh } from './modular/theme';
+import { baseTheme } from '@/cfg/theme';
+
+themeRefresh();
 
 // 初始渲染进程参数
 let route = '/home';
@@ -39,9 +43,9 @@ if (process.platform === 'darwin') {
 } else {
   browserWindowOptions.titleBarStyle = 'hidden';
   browserWindowOptions.titleBarOverlay = {
-    color: '#2f3241',
-    symbolColor: '#74b1be',
-    height: 32
+    color: theme().basicColor,
+    symbolColor: theme().symbolColor,
+    height: baseTheme.headHeight
   };
 }
 
@@ -109,6 +113,7 @@ app.whenReady().then(async () => {
   defaultSessionInit();
 
   // 应用基础监听
+  themeOn();
   appAfterOn();
 
   // 模块监听

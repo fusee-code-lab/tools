@@ -1,14 +1,34 @@
+import type { ThemeObj } from '@/types/theme';
+import { baseTheme } from '@/cfg/theme';
 import { css, injectGlobal } from '@emotion/css';
+import { getStore } from '@youliso/electronic/ipc';
 
-export const dragStyles = css`
+const theme = await getStore<ThemeObj>('theme');
+
+export const dragStyle = css`
   -webkit-app-region: drag;
 `;
 
-export const noDragStyles = css`
+export const nodragStyle = css`
   -webkit-app-region: no-drag;
 `;
 
+export const bgFontcolorStyle = css`
+  background-color: ${theme.basicColor};
+  color: ${theme.symbolColor};
+`;
+
+export const contentStyle = css`
+  padding: ${baseTheme.headHeight}px 10px 10px;
+`;
+
 injectGlobal`
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
   html,
   body {
     width: 100%;

@@ -1,17 +1,20 @@
 import { css } from '@emotion/css';
-import { dragStyles } from '../styles';
+import { baseTheme } from '@/cfg/theme';
+import { dragStyle, nodragStyle } from '../styles';
 
 const style = css`
-  ${dragStyles}
-  width: 100%;
-  height: 32px;
+  position: fixed;
+  z-index: 98;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: ${baseTheme.headHeight}px;
+  width: calc(100% - ${baseTheme.eventWidth}px);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
 `;
 
-const Head = () => (
-  <div class="head">
-    <div class={style}></div>
-    <div></div>
-  </div>
+export default (props: { title: string; noDrag?: boolean }) => (
+  <div class={css([style, props.noDrag ? nodragStyle : dragStyle])}>{props.title}</div>
 );
-
-export default Head;
