@@ -2,7 +2,7 @@ import type { ThemeObj } from '@/types/theme';
 import { baseTheme } from '@/cfg/theme';
 import { css, injectGlobal } from '@emotion/css';
 import { getStore, ipcRendererOn } from '@youliso/electronic/ipc';
-import './color';
+import { colorStyle } from './color';
 
 let theme = await getStore<ThemeObj>('theme');
 
@@ -37,6 +37,8 @@ injectGlobal`
   *:before {
     box-sizing: border-box;
   }
+
+  ${colorStyle}
   
   html,
   body {

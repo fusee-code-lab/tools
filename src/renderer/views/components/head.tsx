@@ -15,6 +15,6 @@ const style = css`
   align-items: center;
 `;
 
-export default (props: { title: string; noDrag?: boolean }) => (
-  <div class={css([style, props.noDrag ? nodragStyle : dragStyle])}>{props.title}</div>
+export default (props: { title?: string; noDrag?: boolean }) => (
+  <div class={css([style, props.noDrag ? nodragStyle : dragStyle])}>{props.title ?? ''}</div>
 );
