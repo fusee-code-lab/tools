@@ -15,7 +15,6 @@ import { app, Menu, nativeImage, Tray } from 'electron';
 import logo from '@/assets/icon/logo.png';
 import { resourcesOn } from './modular/resources';
 import { defaultSessionInit, sessionOn } from './modular/session';
-import { updateOn } from './modular/update';
 
 // 初始渲染进程参数
 let route = '/home';
@@ -102,7 +101,6 @@ app.whenReady().then(async () => {
   appAfterOn();
 
   // 模块监听
-  updateOn();
   sessionOn();
   machineOn();
   resourcesOn();

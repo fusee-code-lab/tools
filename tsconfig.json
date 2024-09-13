@@ -22,9 +22,11 @@
     "allowJs": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts"]
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

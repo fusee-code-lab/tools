@@ -19,32 +19,25 @@ let plugins = [
 let extensions = ['.mjs', '.ts', '.js', '.json', '.node'];
 let externals = { electron: 'electron' };
 builtinModules.forEach((e) => (externals[e] = e));
-Object.keys(packageCfg.dependencies).forEach((e) => (externals[e] = e));
+packageCfg.dependencies && Object.keys(packageCfg.dependencies).forEach((e) => (externals[e] = e));
 
-let rules = (isDevelopment) => [
+let rules = [
   {
     test: /\.(png|jpg|jpeg|gif|svg)$/i,
     type: 'asset'
   },
   {
-    test: /\.(j|t)s$/,
-    exclude: [/[\\/]node_modules[\\/]/],
+    test: /\.ts$/,
+    exclude: [/node_modules/],
     loader: 'builtin:swc-loader',
     options: {
       jsc: {
         parser: {
           syntax: 'typescript'
-        },
-        externalHelpers: true,
-        transform: {
-          react: {
-            runtime: 'automatic',
-            development: isDevelopment,
-            refresh: isDevelopment
-          }
         }
       }
-    }
+    },
+    type: 'javascript/auto'
   }
 ];
 
@@ -66,7 +59,7 @@ export const mainConfig = (isDevelopment) => ({
     minimize: !isDevelopment
   },
   module: {
-    rules: rules(isDevelopment)
+    rules
   },
   plugins,
   externalsType: 'commonjs',
@@ -91,7 +84,7 @@ export const preloadConfig = (isDevelopment) => ({
     minimize: !isDevelopment
   },
   module: {
-    rules: rules(isDevelopment)
+    rules
   },
   plugins,
   externalsType: 'commonjs',
@@ -102,14 +95,15 @@ export const preloadConfig = (isDevelopment) => ({
 export const rendererConfig = (isDevelopment) => ({
   mode: isDevelopment ? 'development' : 'production',
   target: 'web',
-  entry: 'src/renderer/index.ts',
+  entry: 'src/renderer/index.tsx',
   output: {
+    clean: true,
     path: outputPath,
     chunkFilename: '[id].js'
   },
   resolve: {
     alias,
-    extensions,
+    extensions: [...extensions, '...', '.tsx', '.jsx'],
     tsConfig
   },
   optimization: {
@@ -120,10 +114,29 @@ export const rendererConfig = (isDevelopment) => ({
   },
   module: {
     rules: [
-      ...rules(isDevelopment),
+      ...rules,
       {
         test: /.css$/,
-        type: 'css/auto'
+        type: 'css'
+      },
+      {
+        test: /\.module.css$/,
+        type: 'css/module',
+        parser: {
+          namedExports: false
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [['solid']],
+              plugins: ['solid-refresh/babel']
+            }
+          }
+        ]
       }
     ]
   },
@@ -133,9 +146,7 @@ export const rendererConfig = (isDevelopment) => ({
       templateContent: `
         <!DOCTYPE html>
         <html>
-            <body>
-               <div id="root"></div>
-            </body>
+            <body></body>
         </html>`,
       minify: !isDevelopment
     })

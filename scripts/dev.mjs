@@ -31,12 +31,13 @@ async function startMain() {
       },
       (err, stats) => {
         if (err || stats.hasErrors()) {
-          console.error(err.stack || err);
-          if (err.details) {
+          console.error(err?.stack || err);
+          if (err?.details) {
             console.error(err.details);
+          } else {
+            console.error(stats.toString());
           }
-          reject(1);
-          return;
+          throw new Error('Error occured in main process');
         }
         if (electronProcess && electronProcess.kill) {
           manualRestart = true;
@@ -85,8 +86,10 @@ function onLog(type, data) {
 
 startRenderer().then(() => {
   console.time('dev');
-  startMain().then(() => {
-    startElectron();
-    console.timeEnd('dev');
-  });
+  startMain()
+    .then(() => {
+      startElectron();
+      console.timeEnd('dev');
+    })
+    .catch(console.error);
 });
