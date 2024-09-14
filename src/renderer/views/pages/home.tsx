@@ -1,29 +1,17 @@
+import type { RouteSectionProps } from '@solidjs/router';
 import { windowShow } from '@youliso/electronic/ipc';
-import { createSignal, For, onMount } from 'solid-js';
-import { containerStyle } from '../styles';
-import Head from '../components/head';
+import { onMount } from 'solid-js';
+import { Button } from '../components/basis';
+import { navigate } from '@/renderer/router';
 
-const Item = (props: { name: string }) => <div>{props.name}</div>;
-
-const ItemList = (props: { items: string[] }) => {
-  return <For each={props.items}>{(item, i) => <Item name={item} />}</For>;
-};
-
-export default () => {
+export default (props: RouteSectionProps) => {
+  console.log(props);
+  
   onMount(() => windowShow());
-
-  const [list, setList] = createSignal(['hello world', '123', '321', '456']);
-  const test = () => {
-    setList((items) => [...items, Date.now() + '']);
-  };
 
   return (
     <>
-      <Head />
-      <div class={containerStyle}>
-        <button onClick={test}>test</button>
-        <ItemList items={list()} />
-      </div>
+      <Button text="123" onClick={() => navigate('/test')} />
     </>
   );
 };

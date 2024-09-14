@@ -19,21 +19,25 @@ export const navigateParams = (names: string[]) => {
   return obj;
 };
 
-let routes: RouteDefinition[] = [
+const routes: RouteDefinition[] = [
   {
-    path: '/home',
-    component: lazy(() => import('@/renderer/views/pages/home'))
-  },
-  {
-    path: '/about',
-    component: lazy(() => import('@/renderer/views/pages/about'))
+    path: '/',
+    component: lazy(() => import('@/renderer/views/pages/layout')),
+    children: [
+      {
+        path: '/home',
+        component: lazy(() => import('@/renderer/views/pages/home'))
+      },
+      {
+        path: '/about',
+        component: lazy(() => import('@/renderer/views/pages/about'))
+      },
+      {
+        path: '/test',
+        component: lazy(() => import('@/renderer/views/pages/test'))
+      }
+    ]
   }
 ];
 
-export default (route?: string) => {
-  if (route) {
-    let r = routes.find((item) => item.path === route);
-    r && (r.path = ['/', route]);
-  }
-  return routes;
-};
+export default routes;

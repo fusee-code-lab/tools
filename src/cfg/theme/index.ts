@@ -1,4 +1,3 @@
-import { ThemeObj } from '@/types/theme';
 import base from './base';
 import dark from './dark';
 import light from './light';
@@ -9,7 +8,7 @@ export const darkTheme = dark;
 
 export const lightTheme = light;
 
-export const Theme = (type: 'light' | 'dark' = 'light'): ThemeObj => {
+export const Theme = (type: 'light' | 'dark' = 'light') => {
   switch (type) {
     case 'dark':
       return dark;

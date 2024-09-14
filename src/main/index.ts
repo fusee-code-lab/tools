@@ -17,6 +17,7 @@ import { defaultSessionInit, sessionOn } from './modular/session';
 import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
+import { deviceOn } from './modular/device';
 
 themeRefresh();
 
@@ -113,6 +114,7 @@ app.whenReady().then(async () => {
   defaultSessionInit();
 
   // 应用基础监听
+  deviceOn();
   themeOn();
   appAfterOn();
 

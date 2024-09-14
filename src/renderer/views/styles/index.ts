@@ -1,15 +1,6 @@
-import type { ThemeObj } from '@/types/theme';
 import { baseTheme } from '@/cfg/theme';
 import { css, injectGlobal } from '@emotion/css';
-import { getStore, ipcRendererOn } from '@youliso/electronic/ipc';
-import { colorStyle } from './color';
-
-let theme = await getStore<ThemeObj>('theme');
-
-ipcRendererOn('theme-updated', async (themeSource) => {
-  document.documentElement.setAttribute('theme', themeSource);
-  theme = await getStore<ThemeObj>('theme');
-});
+import { themeStyle } from './theme';
 
 export const dragStyle = css`
   -webkit-app-region: drag;
@@ -20,7 +11,7 @@ export const nodragStyle = css`
 `;
 
 export const containerStyle = css`
-  padding: ${baseTheme.headHeight + 1}px 1px 1px;
+  padding: ${baseTheme.headHeight + 1}px 10px 10px;
   width: 100%;
   height: 100%;
   background-color: var(--basic-color);
@@ -34,7 +25,7 @@ injectGlobal`
     box-sizing: border-box;
   }
 
-  ${colorStyle}
+  ${themeStyle}
   
   html,
   body {

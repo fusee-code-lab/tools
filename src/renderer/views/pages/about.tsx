@@ -1,14 +1,10 @@
-import { containerStyle } from '../styles';
+import type { RouteSectionProps } from '@solidjs/router';
 import { navigate } from '@/renderer/router';
-import Head from '../components/head';
 
-export default () => {
+export default (props: RouteSectionProps) => {
   return (
     <>
-      <Head title="关于" />
-      <div class={containerStyle}>
-        <button onClick={() => navigate('/home')}>返回</button>
-      </div>
+      <button onClick={() => navigate('/home')}>返回</button>
     </>
   );
 };

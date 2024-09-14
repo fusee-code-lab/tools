@@ -13,6 +13,7 @@ const style = css`
   padding: 0 10px;
   display: flex;
   align-items: center;
+  color: var(--symbol-color);
 `;
 
 export default (props: { title?: string; noDrag?: boolean }) => (
