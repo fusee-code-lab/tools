@@ -10,13 +10,13 @@ import {
   shortcutInstance,
   windowInstance
 } from '@youliso/electronic/main';
-import { join } from 'path';
+import { join } from 'node:path';
 import { app, Menu, nativeImage, Tray } from 'electron';
-import logo from '@/assets/icon/logo.png';
 import { resourcesOn } from './modular/resources';
 import { defaultSessionInit, sessionOn } from './modular/session';
 import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
+import logo from '@/assets/icon/logo.png';
 
 themeRefresh();
 
@@ -125,7 +125,7 @@ app.whenReady().then(async () => {
   shortcutInstance.on();
 
   // 创建托盘
-  const tray = new Tray(nativeImage.createFromPath(logo as string));
+  const tray = new Tray(nativeImage.createFromPath(join(__dirname, logo)));
   tray.setToolTip(app.getName());
   tray.setContextMenu(
     Menu.buildFromTemplate([

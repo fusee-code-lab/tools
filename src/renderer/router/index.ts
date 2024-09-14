@@ -1,17 +1,6 @@
 import { type RouteDefinition } from '@solidjs/router';
 import { lazy } from 'solid-js';
 
-let routes: RouteDefinition[] = [
-  {
-    path: '/home',
-    component: lazy(() => import('@/renderer/views/pages/home'))
-  },
-  {
-    path: '/about',
-    component: lazy(() => import('@/renderer/views/pages/about'))
-  }
-];
-
 export const navigate = (path: string, params?: { [key: string]: string }) => {
   if (params) {
     path += '?' + new URLSearchParams(params).toString();
@@ -30,9 +19,21 @@ export const navigateParams = (names: string[]) => {
   return obj;
 };
 
+let routes: RouteDefinition[] = [
+  {
+    path: '/home',
+    component: lazy(() => import('@/renderer/views/pages/home'))
+  },
+  {
+    path: '/about',
+    component: lazy(() => import('@/renderer/views/pages/about'))
+  }
+];
+
 export default (route?: string) => {
   if (route) {
-    routes.forEach((item) => item.path === route && (item.path = ['/', route]));
+    let r = routes.find((item) => item.path === route);
+    r && (r.path = ['/', route]);
   }
   return routes;
 };

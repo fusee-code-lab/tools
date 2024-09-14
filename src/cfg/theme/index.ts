@@ -1,11 +1,9 @@
 import { ThemeObj } from '@/types/theme';
+import base from './base';
 import dark from './dark';
 import light from './light';
 
-export const baseTheme = {
-  headHeight: 32,
-  eventWidth: 138
-};
+export const baseTheme = base;
 
 export const darkTheme = dark;
 

@@ -19,12 +19,8 @@ export const nodragStyle = css`
   -webkit-app-region: no-drag;
 `;
 
-export const contentStyle = css`
-  padding: ${baseTheme.headHeight}px 10px 10px;
-`;
-
 export const containerStyle = css`
-  ${contentStyle}
+  padding: ${baseTheme.headHeight + 1}px 1px 1px;
   width: 100%;
   height: 100%;
   background-color: var(--basic-color);

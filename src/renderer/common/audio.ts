@@ -32,7 +32,7 @@ class Audios {
   private gainNode: GainNode;
 
   static getInstance() {
-    if (!Audios.instance) Audios.instance = new Audios();
+    !Audios.instance && (Audios.instance = new Audios());
     return Audios.instance;
   }
 
