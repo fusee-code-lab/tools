@@ -6,7 +6,7 @@ export default (props: RouteSectionProps) => {
   return (
     <>
       <h1>about</h1>
-      <Button text="home" onClick={() => navigate('/home')} />
+      <Button text="home" onClick={() => navigate('/main/home')} />
     </>
   );
 };

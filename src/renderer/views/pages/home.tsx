@@ -5,7 +5,7 @@ import { Button } from '../components/basis';
 
 const Text = () => {
   const navigate = useNavigate();
-  return <Button text="about" onClick={() => navigate('/about')} />;
+  return <Button text="about" onClick={() => navigate('/main/about')} />;
 };
 
 export default (props: RouteSectionProps) => {

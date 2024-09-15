@@ -22,7 +22,7 @@ import { deviceOn } from './modular/device';
 themeRefresh();
 
 // 初始渲染进程参数
-let route = '/home';
+let route = '/main/home';
 let customize: Customize = {
   title: app.name,
   route

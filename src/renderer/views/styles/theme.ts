@@ -35,7 +35,13 @@ export const themeStyle = css`
   ${!isWindows11 &&
   getOS() === 'win' &&
   css`
-    body {
+    body::after {
+      position: fixed;
+      content: '';
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
       border: 1px solid var(--accent-color);
     }
   `}
