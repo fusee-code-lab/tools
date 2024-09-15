@@ -15,7 +15,7 @@ async function startRenderer() {
     throw 'not found process.env.PORT';
   }
   const server = new RspackDevServer(
-    { port, host: 'localhost', hot: true },
+    { port, host: 'localhost'},
     rspack(rspackConfig.rendererConfig(true))
   );
   await server.start();
