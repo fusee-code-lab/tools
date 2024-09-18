@@ -11,11 +11,10 @@ export const nodragStyle = css`
 `;
 
 export const containerStyle = css`
-  padding: ${baseTheme.headHeight + 1}px 10px 10px;
+  position: relative;
+  padding: ${baseTheme.headHeight + 1}px 1px 1px;
   width: 100%;
   height: 100%;
-  background-color: var(--basic-color);
-  color: var(--symbol-color);
 `;
 
 injectGlobal`
@@ -35,5 +34,7 @@ injectGlobal`
     margin: 0;
     position: relative;
     user-select: none;
+    background-color: var(--basic-color);
+    color: var(--symbol-color);
   }
 `;
