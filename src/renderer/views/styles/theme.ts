@@ -1,5 +1,6 @@
 import type { ThemeObj } from '@/types/theme';
-import { getStore, ipcRendererOn } from '@youliso/electronic/ipc';
+import { getStore } from '@youliso/electronic/render';
+import preload from '@youliso/electronic/preload';
 import { darkTheme, lightTheme } from '@/cfg/theme';
 import { css } from '@emotion/css';
 import { getOS, setCssVariant } from '@/renderer/common/utils';
@@ -7,7 +8,7 @@ import { getOS, setCssVariant } from '@/renderer/common/utils';
 const isWindows11 = await window.device.isWindows11();
 export let theme = await getStore<ThemeObj>('theme');
 
-ipcRendererOn('theme-updated', async (themeSource) => {
+preload.on('theme-updated', async (themeSource) => {
   document.documentElement.setAttribute('theme', themeSource);
   theme = await getStore<ThemeObj>('theme');
   setCssVariant('--accent-color', theme.accentColor);

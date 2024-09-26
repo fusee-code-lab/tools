@@ -1,4 +1,4 @@
-import { windowLoad } from '@youliso/electronic/ipc';
+import { windowLoad } from '@youliso/electronic/render';
 import { render } from 'solid-js/web';
 import { HashRouter } from '@solidjs/router';
 import router from './router';

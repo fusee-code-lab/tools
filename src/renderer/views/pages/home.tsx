@@ -1,5 +1,5 @@
 import { useNavigate, type RouteSectionProps } from '@solidjs/router';
-import { windowShow } from '@youliso/electronic/ipc';
+import { windowShow } from '@youliso/electronic/render';
 import { onMount } from 'solid-js';
 import { Button } from '../components/basis';
 
