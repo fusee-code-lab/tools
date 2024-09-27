@@ -12,7 +12,7 @@ export const nodragStyle = css`
 
 export const containerStyle = css`
   position: relative;
-  padding: ${baseTheme.headHeight + 1}px 1px 1px;
+  padding: ${baseTheme.headHeight + 1}px 10px 10px;
   width: 100%;
   height: 100%;
 `;
