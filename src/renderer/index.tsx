@@ -1,8 +1,11 @@
+import preload from '@youliso/electronic/preload';
 import { windowLoad } from '@youliso/electronic/render';
 import { render } from 'solid-js/web';
 import { HashRouter } from '@solidjs/router';
 import router from './router';
 import './views/styles';
+
+preload.render();
 
 windowLoad(async () => {
   document.documentElement.setAttribute('theme', await window.theme.get());

@@ -10,14 +10,17 @@ import {
   shortcutInstance,
   windowInstance
 } from '@youliso/electronic/main';
+import preload from '@youliso/electronic/preload';
 import { join } from 'node:path';
-import { app, Menu, nativeImage, Tray } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, nativeImage, Tray, webContents } from 'electron';
 import { resourcesOn } from './modular/resources';
 import { defaultSessionInit, sessionOn } from './modular/session';
 import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
 import { deviceOn } from './modular/device';
+
+preload.main(BrowserWindow, ipcMain, webContents);
 
 themeRefresh();
 
