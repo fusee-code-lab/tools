@@ -4,8 +4,9 @@ import preload from '@youliso/electronic/preload';
 import { darkTheme, lightTheme } from '@/cfg/theme';
 import { css } from '@emotion/css';
 import { getOS, setCssVariant } from '@/renderer/common/utils';
+import { isWindows11 } from '@/renderer/common/device';
 
-const isWindows11 = await window.device.isWindows11();
+const isWin11 = await isWindows11();
 export let theme = await getStore<ThemeObj>('theme');
 
 preload.on('theme-updated', async (themeSource) => {
@@ -33,7 +34,7 @@ export const themeStyle = css`
     --accent-color: ${theme.accentColor};
   }
 
-  ${!isWindows11 &&
+  ${!isWin11 &&
   getOS() === 'win' &&
   css`
     body::before {

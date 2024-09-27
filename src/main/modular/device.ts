@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron';
+import preload from '@youliso/electronic/preload';
 import { release } from 'node:os';
 
 const device_number = release();
@@ -11,5 +11,5 @@ export const isWindows11 = (): boolean => {
 };
 
 export const deviceOn = () => {
-  ipcMain.handle('device-windows11-is', () => isWindows11());
+  preload.handle('device-windows11-is', () => isWindows11());
 };

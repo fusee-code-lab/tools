@@ -1,7 +1,8 @@
 import { baseTheme, Theme } from '@/cfg/theme';
 import { ThemeObj } from '@/types/theme';
 import { storeInstance, windowInstance } from '@youliso/electronic/main';
-import { ipcMain, nativeTheme, systemPreferences } from 'electron';
+import preload from '@youliso/electronic/preload';
+import { nativeTheme, systemPreferences } from 'electron';
 import { debounce } from './tools';
 
 export const getThemeSource = () =>
@@ -31,10 +32,10 @@ export const themeOn = () => {
           symbolColor: theme().symbolColor,
           height: baseTheme.headHeight
         });
-        win.webContents.send('theme-updated', getThemeSource());
       });
+      preload.send('theme-updated', getThemeSource());
     }, 1000)
   );
   // 获取系统主题
-  ipcMain.handle('theme-source-get', () => getThemeSource());
+  preload.handle('theme-source-get', () => getThemeSource());
 };
