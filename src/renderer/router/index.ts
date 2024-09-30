@@ -19,7 +19,7 @@ let routes: RouteDefinition[] = [
 ];
 
 const router = (route?: string) => {
-  if (route) {
+  if (route && route !== '/') {
     routes.unshift({
       path: '/',
       preload: () => useNavigate()(route, { replace: true })
