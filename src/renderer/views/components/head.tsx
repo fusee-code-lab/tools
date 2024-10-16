@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import { baseTheme } from '@/cfg/theme';
 import { dragStyle, nodragStyle } from '../styles';
+import { getOS } from '@/renderer/common/utils';
 
 const style = css`
   position: fixed;
@@ -12,6 +13,7 @@ const style = css`
   width: calc(100% - ${baseTheme.eventWidth}px);
   padding: 0 10px;
   display: flex;
+  justify-content: ${getOS() === 'mac' ? 'flex-end' : 'flex-start'};
   align-items: center;
   color: var(--symbol-color);
 `;
