@@ -14,10 +14,14 @@ export const getThemeSource = () =>
 
 export const theme = () => storeInstance.get<ThemeObj>('theme')!;
 export const themeRefresh = () => {
-  storeInstance.set('theme', {
+  const themeObj = {
     ...Theme(getThemeSource()),
-    accentColor: `#${systemPreferences.getAccentColor()}`
-  });
+    accentColor: ''
+  };
+  if (process.platform !== 'linux') {
+    themeObj.accentColor = `#${systemPreferences.getAccentColor()}`;
+  }
+  storeInstance.set('theme', themeObj);
 };
 export const themeOn = () => {
   // 系统主题发生变化监听并发给渲染进程
