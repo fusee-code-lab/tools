@@ -4,7 +4,7 @@ import { lazy } from 'solid-js';
 let routes: RouteDefinition[] = [
   {
     path: '/main',
-    component: lazy(() => import('@/renderer/views/pages/layout')),
+    component: lazy(() => import('@/renderer/views/layout')),
     children: [
       {
         path: '/home',

@@ -1,6 +1,6 @@
 import type { RouteSectionProps } from '@solidjs/router';
-import Head from '../components/head';
-import { containerStyle } from '../styles';
+import Head from './components/head';
+import { containerStyle } from './styles';
 
 export default (props: RouteSectionProps) => {
   return (
