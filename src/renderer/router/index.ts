@@ -1,4 +1,4 @@
-import { type RouteDefinition, useNavigate } from '@solidjs/router';
+import { type RouteDefinition } from '@solidjs/router';
 import { lazy } from 'solid-js';
 
 let routes: RouteDefinition[] = [
@@ -22,7 +22,7 @@ const router = (route?: string) => {
   if (route && route !== '/') {
     routes.unshift({
       path: '/',
-      preload: () => useNavigate()(route, { replace: true })
+      preload: () => (window.location.hash = '#' + route)
     });
   }
   return routes;
