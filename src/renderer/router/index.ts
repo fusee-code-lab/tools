@@ -3,6 +3,10 @@ import { lazy } from 'solid-js';
 
 let routes: RouteDefinition[] = [
   {
+    path: '/wallpaper',
+    component: lazy(() => import('@/renderer/views/wallpaper'))
+  },
+  {
     path: '/main',
     component: lazy(() => import('@/renderer/views/layout')),
     children: [

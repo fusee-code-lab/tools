@@ -19,6 +19,7 @@ import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
 import { deviceOn } from './modular/device';
+import { wallpaperOn } from './modular/wallpaper';
 
 preload.main(BrowserWindow, ipcMain, webContents);
 
@@ -86,7 +87,6 @@ appSingleInstanceLock({
   }
 });
 
-
 // 注册协议
 appProtocolRegister();
 
@@ -132,6 +132,8 @@ app.whenReady().then(async () => {
   storeInstance.on();
   windowInstance.on();
   shortcutInstance.on();
+
+  wallpaperOn();
 
   // 创建托盘
   const tray = new Tray(nativeImage.createFromPath(join(__dirname, logo)));

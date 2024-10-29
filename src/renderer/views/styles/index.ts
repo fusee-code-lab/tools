@@ -32,8 +32,13 @@ injectGlobal`
     height: 100%;
     padding: 0;
     margin: 0;
+    background-color: transparent;
+  }
+  .container {
     position: relative;
     user-select: none;
+    width: 100%;
+    height: 100%;
     background-color: var(--basic-color);
     color: var(--symbol-color);
   }

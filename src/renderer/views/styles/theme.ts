@@ -37,7 +37,7 @@ export const themeStyle = css`
   ${!isWin11 &&
   getOS() === 'win' &&
   css`
-    body::before {
+    .container::before {
       position: fixed;
       content: '';
       left: 0;
