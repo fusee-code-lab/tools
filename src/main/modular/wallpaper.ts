@@ -1,5 +1,4 @@
-import preload from '@youliso/electronic/preload';
-import { windowInstance } from '@youliso/electronic/main';
+import { preload, windowInstance } from '@youliso/electronic/main';
 import { attach, detach, reset } from 'electron-as-wallpaper';
 
 export const wallpaperSet = (

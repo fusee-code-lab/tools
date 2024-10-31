@@ -1,5 +1,4 @@
-import preload from '@youliso/electronic/preload';
-import { windowLoad } from '@youliso/electronic/render';
+import { preload, windowLoad } from '@youliso/electronic/render';
 import { render } from 'solid-js/web';
 import { HashRouter } from '@solidjs/router';
 import { getThemeSource } from './common/theme';

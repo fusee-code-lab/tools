@@ -1,6 +1,5 @@
 import type { ThemeObj } from '@/types/theme';
-import { getStore } from '@youliso/electronic/render';
-import preload from '@youliso/electronic/preload';
+import { preload, getStore } from '@youliso/electronic/render';
 import { darkTheme, lightTheme } from '@/cfg/theme';
 import { css } from '@emotion/css';
 import { getOS, setCssVariant } from '@/renderer/common/utils';

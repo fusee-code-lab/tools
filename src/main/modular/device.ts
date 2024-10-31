@@ -1,4 +1,4 @@
-import preload from '@youliso/electronic/preload';
+import { preload } from '@youliso/electronic/main';
 import { release } from 'node:os';
 
 const device_number = release();

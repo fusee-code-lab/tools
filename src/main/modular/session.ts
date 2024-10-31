@@ -1,5 +1,5 @@
 import { session } from 'electron';
-import preload from '@youliso/electronic/preload';
+import { preload } from '@youliso/electronic/main';
 
 export const defaultSessionInit = () => {
   session.defaultSession.webRequest.onBeforeSendHeaders(

@@ -1,7 +1,6 @@
 import { baseTheme, Theme } from '@/cfg/theme';
 import { ThemeObj } from '@/types/theme';
-import { storeInstance, windowInstance } from '@youliso/electronic/main';
-import preload from '@youliso/electronic/preload';
+import { preload, storeInstance, windowInstance } from '@youliso/electronic/main';
 import { nativeTheme, systemPreferences } from 'electron';
 import { debounce } from './tools';
 
