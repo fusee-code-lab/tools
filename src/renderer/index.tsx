@@ -5,7 +5,7 @@ import { getThemeSource } from './common/theme';
 import router from './router';
 import './views/styles';
 
-preload.render();
+preload.initialize();
 
 windowLoad(async () => {
   document.documentElement.setAttribute('theme', await getThemeSource());

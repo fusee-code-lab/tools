@@ -12,7 +12,7 @@ import {
   preload
 } from '@youliso/electronic/main';
 import { join } from 'node:path';
-import { app, BrowserWindow, ipcMain, Menu, nativeImage, Tray, webContents } from 'electron';
+import { app, Menu, nativeImage, Tray } from 'electron';
 import { resourcesOn } from './modular/resources';
 import { defaultSessionInit, sessionOn } from './modular/session';
 import { theme, themeOn, themeRefresh } from './modular/theme';
@@ -21,7 +21,7 @@ import logo from '@/assets/icon/logo.png';
 import { deviceOn } from './modular/device';
 import { wallpaperOn } from './modular/wallpaper';
 
-preload.main(BrowserWindow, ipcMain, webContents);
+preload.initialize();
 
 themeRefresh();
 
