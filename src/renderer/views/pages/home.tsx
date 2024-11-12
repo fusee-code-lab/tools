@@ -5,6 +5,7 @@ import { Button } from '../components/basis';
 import { wallpaperSet, wallpaperOff } from '@/renderer/common/wallpaper';
 
 let winId: number | undefined;
+
 const set = async () => {
   // @ts-ignore
   const { screens } = await window.getScreenDetails();
@@ -17,7 +18,8 @@ const set = async () => {
       height: screens[0].height,
       frame: false,
       show: false,
-      transparent: true
+      transparent: true,
+      skipTaskbar: true
     }
   );
   if (win) {

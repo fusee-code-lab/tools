@@ -114,7 +114,7 @@ const rendererConfig = (isDevelopment) => ({
     rules: [
       ...rules,
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        test: /\.(png|jpg|jpeg|gif|svg|mp4)$/i,
         type: 'asset'
       },
       {

@@ -7,3 +7,4 @@ declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
 declare module '*.node';
+declare module '*.mp4';
