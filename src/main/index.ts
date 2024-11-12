@@ -19,7 +19,7 @@ import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
 import { deviceOn } from './modular/device';
-import { wallpaperOn } from './modular/wallpaper';
+import { wallpaperOff, wallpaperOn } from './modular/wallpaper';
 
 preload.initialize();
 
@@ -34,8 +34,8 @@ let customize: Customize = {
 
 // 初始窗口参数
 let browserWindowOptions: BrowserWindowConstructorOptions = {
-  width: 800,
-  height: 600,
+  width: 400,
+  height: 200,
   show: false,
   webPreferences: {
     devTools: true
@@ -95,6 +95,10 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
+app.on('before-quit', () => {
+  wallpaperOff();
+});
+
 app.whenReady().then(async () => {
   app.on('activate', () => {
     const mainWin = windowInstance.getMain();
@@ -141,7 +145,7 @@ app.whenReady().then(async () => {
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
-        label: 'Exit',
+        label: '退出',
         click: () => {
           app.quit();
         }

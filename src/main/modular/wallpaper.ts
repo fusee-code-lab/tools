@@ -19,11 +19,13 @@ export const wallpaperSet = (
   }
 };
 
-export const wallpaperOff = (winId: number) => {
+export const wallpaperOff = (winId?: number) => {
   if (process.platform === 'win32') {
-    const win = windowInstance.get(winId);
-    if (win) {
-      detach(win);
+    if (winId) {
+      const win = windowInstance.get(winId);
+      if (win) {
+        detach(win);
+      }
     }
     reset();
   }
