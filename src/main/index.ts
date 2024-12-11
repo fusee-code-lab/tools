@@ -19,7 +19,6 @@ import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
 import { deviceOn } from './modular/device';
-import { wallpaperOff, wallpaperOn } from './modular/wallpaper';
 
 preload.initialize();
 
@@ -95,17 +94,13 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
-app.on('before-quit', () => {
-  wallpaperOff();
-});
-
 app.whenReady().then(async () => {
   app.on('activate', () => {
     const mainWin = windowInstance.getMain();
     if (mainWin && mainWin.customize.route === route) {
       mainWin.show();
     } else {
-      windowInstance.new(customize, browserWindowOptions, { openDevTools: !app.isPackaged });
+      windowInstance.new(customize, browserWindowOptions);
     }
   });
   // 获得焦点时发出
@@ -137,8 +132,6 @@ app.whenReady().then(async () => {
   windowInstance.on();
   shortcutInstance.on();
 
-  wallpaperOn();
-
   // 创建托盘
   const tray = new Tray(nativeImage.createFromPath(join(__dirname, logo)));
   tray.setToolTip(app.getName());
@@ -154,5 +147,5 @@ app.whenReady().then(async () => {
   );
   tray.on('click', () => windowInstance.func('show'));
   // 创建窗口
-  windowInstance.new(customize, browserWindowOptions, { openDevTools: !app.isPackaged });
+  windowInstance.new(customize, browserWindowOptions);
 });

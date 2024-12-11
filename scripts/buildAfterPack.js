@@ -1,10 +1,14 @@
 const asarmor = require('./plugins/asarmor');
-const { asar } = require('./.build.json');
+const removeLocales = require('./plugins/removeLocales');
 
 exports.default = async ({ appOutDir, packager }) => {
   try {
-    if (asar) {
-      asarmor(appOutDir);
+    let target = packager.appInfo.platformSpecificOptions.target[0];
+    if (packager.info._configuration.asar) {
+      asarmor(packager.getResourcesDir(appOutDir));
+    }
+    if (target.target === 'nsis') {
+      removeLocales(appOutDir);
     }
   } catch (err) {
     console.error(err);
