@@ -1,3 +1,9 @@
+import { preload } from "@youliso/electronic/render";
+
+export const getWebFilePath = (file: File) => {
+  return preload.bridge<string>('utils-file-path', file);
+};
+
 export const getOS = () => {
   let OS: 'unknown' | 'win' | 'mac' | 'unix' | 'linux' = 'unknown';
   if (navigator.userAgent.indexOf('Win') != -1) OS = 'win';

@@ -2,10 +2,8 @@ import type { ThemeObj } from '@/types/theme';
 import { preload, getStore } from '@youliso/electronic/render';
 import { darkTheme, lightTheme } from '@/cfg/theme';
 import { css } from '@emotion/css';
-import { getOS, setCssVariant } from '@/renderer/common/utils';
-import { isWindows11 } from '@/renderer/common/device';
+import { setCssVariant } from '@/renderer/common/utils';
 
-const isWin11 = await isWindows11();
 export let theme = await getStore<ThemeObj>('theme');
 
 preload.on('theme-updated', async (themeSource) => {
@@ -32,18 +30,4 @@ export const themeStyle = css`
   :root {
     --accent-color: ${theme.accentColor};
   }
-
-  ${!isWin11 &&
-  getOS() === 'win' &&
-  css`
-    .container::before {
-      position: fixed;
-      content: '';
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      border: 1px solid var(--accent-color);
-    }
-  `}
 `;

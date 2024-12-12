@@ -25,16 +25,15 @@ preload.initialize();
 themeRefresh();
 
 // 初始渲染进程参数
-let route = '/main/home';
+let route = '/home';
 let customize: Customize = {
-  title: app.name,
   route
 };
 
 // 初始窗口参数
 let browserWindowOptions: BrowserWindowConstructorOptions = {
   width: 400,
-  height: 200,
+  height: 1000,
   show: false,
   webPreferences: {
     devTools: true

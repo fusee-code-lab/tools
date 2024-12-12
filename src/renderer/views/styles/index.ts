@@ -35,7 +35,6 @@ injectGlobal`
     background-color: transparent;
   }
   .container {
-    position: relative;
     user-select: none;
     width: 100%;
     height: 100%;
