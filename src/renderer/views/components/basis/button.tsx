@@ -6,19 +6,23 @@ const defaultStyle = css`
   ${nodragStyle}
   outline: none;
   border: none;
-  padding: 4px 10px;
+  padding: 4px 8px;
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--accent-color);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 const styles = {
-  default: css`
-  
-  `,
+  default: css``,
   primary: css``
 };
 
 const Button = (props: {
   disabled?: boolean;
-  className?: string;
+  class?: string;
   type?: 'default' | 'primary';
   onClick?: () => void;
   children?: JSX.Element;
@@ -26,7 +30,7 @@ const Button = (props: {
   const typeCss = styles[props.type || 'default'];
   return (
     <button
-      class={cx(defaultStyle, typeCss, props.className)}
+      class={cx(defaultStyle, typeCss, props.class)}
       disabled={props.disabled}
       onClick={props.onClick}
     >

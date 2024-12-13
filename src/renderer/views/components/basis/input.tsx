@@ -6,7 +6,11 @@ const defaultStyle = css`
   ${nodragStyle}
   outline: none;
   border: none;
-  padding: 4px 10px;
+  padding: 4px 8px;
+
+  &:focus {
+    box-shadow: inset 0 0 0 1px var(--accent-color);
+  }
 
   &[type='checkbox'] {
     margin: 0;
@@ -15,7 +19,7 @@ const defaultStyle = css`
 
 const Input = (props: {
   disabled?: boolean;
-  className?: string;
+  class?: string;
   placeholder?: string;
   type?:
     | 'text'
@@ -46,7 +50,7 @@ const Input = (props: {
 }) => {
   return (
     <input
-      class={cx(defaultStyle, props.className)}
+      class={cx(defaultStyle, props.class)}
       placeholder={props.placeholder}
       value={props.value ?? ''}
       onInput={props.onInput}

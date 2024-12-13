@@ -11,7 +11,7 @@ export default (props: RouteSectionProps) => {
     <>
       <Button>test</Button>
       <br />
-      <Input type="checkbox" />
+      <Input />
     </>
   );
 };
