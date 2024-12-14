@@ -18,7 +18,8 @@ import { defaultSessionInit, sessionOn } from './modular/session';
 import { theme, themeOn, themeRefresh } from './modular/theme';
 import { baseTheme } from '@/cfg/theme';
 import logo from '@/assets/icon/logo.png';
-import { deviceOn } from './modular/device';
+import { dialogOn } from './modular/dialog';
+import { xlsxOn } from './modular/xlsx';
 
 preload.initialize();
 
@@ -119,7 +120,6 @@ app.whenReady().then(async () => {
   defaultSessionInit();
 
   // 应用基础监听
-  deviceOn();
   themeOn();
   appAfterOn();
 
@@ -130,6 +130,9 @@ app.whenReady().then(async () => {
   storeInstance.on();
   windowInstance.on();
   shortcutInstance.on();
+
+  dialogOn();
+  xlsxOn();
 
   // 创建托盘
   const tray = new Tray(nativeImage.createFromPath(join(__dirname, logo)));

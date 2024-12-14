@@ -7,11 +7,10 @@ const defaultStyle = css`
   outline: none;
   border: none;
   padding: 4px 8px;
-  &:hover {
-    box-shadow: inset 0 0 0 1px var(--accent-color);
-  }
+  border-radius: 3px;
+
   &:active {
-    transform: scale(0.98);
+    opacity: 0.95;
   }
 `;
 
